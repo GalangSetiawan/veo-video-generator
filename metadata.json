@@ -1,4 +1,5 @@
 {
   "name": "VEO Video Generator",
-  "description": "A web application to generate high-quality videos from text prompts and reference images using Google's VEO model. Customize aspect ratio and other settings for the perfect video."
+  "description": "A web application to generate videos from text prompts and optional reference images using Google's VEO model.",
+  "requestFramePermissions": []
 }

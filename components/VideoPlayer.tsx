@@ -1,28 +1,27 @@
+
 import React from 'react';
-import { DownloadIcon } from './icons';
-import type { VideoResult } from '../types';
+import Button from './Button';
 
 interface VideoPlayerProps {
-  videoResult: VideoResult;
+  videoUrl: string;
+  onClear: () => void;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoResult }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoUrl, onClear }) => {
   return (
-    <div className="flex flex-col h-full items-center justify-center bg-gray-800 rounded-lg p-4 space-y-4">
-      <h3 className="text-xl font-semibold text-white">Generation Complete!</h3>
-      <div className="w-full aspect-video bg-black rounded-md overflow-hidden">
-        <video src={videoResult.url} controls autoPlay loop className="w-full h-full object-contain">
-          Your browser does not support the video tag.
-        </video>
+    <div className="bg-gray-900 rounded-lg p-4 flex flex-col items-center space-y-4">
+      <video src={videoUrl} controls autoPlay loop className="w-full rounded-md shadow-2xl shadow-black/50" />
+      <div className="flex items-center space-x-4">
+        <a href={videoUrl} download="generated-video.mp4">
+          <Button variant="primary">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+            Download Video
+          </Button>
+        </a>
+        <Button variant="secondary" onClick={onClear}>
+          Create Another
+        </Button>
       </div>
-      <a
-        href={videoResult.url}
-        download={`veo-generated-video-${new Date().getTime()}.mp4`}
-        className="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-green-500 transition-colors"
-      >
-        <DownloadIcon className="w-5 h-5 mr-2" />
-        Download Video
-      </a>
     </div>
   );
 };
