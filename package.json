@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/GalangSetiawan/veo-video-generator"
   "name": "veo-video-generator",
   "private": true,
   "version": "0.0.0",
@@ -7,6 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@google/genai": "^1.18.0",
